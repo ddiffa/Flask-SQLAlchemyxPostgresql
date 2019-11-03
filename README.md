@@ -1,4 +1,4 @@
-# JWT-Flask-SQLAlchemy (in development)
+# JWT-Flask-SQLAlchemy
 
 ## Installation
   - Install [Python](https://www.python.org/downloads/), [Pipenv](https://docs.pipenv.org/) and [Postgres](https://www.postgresql.org/) on your machine
