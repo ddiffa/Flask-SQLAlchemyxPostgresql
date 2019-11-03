@@ -17,7 +17,7 @@
 ## Export the required environment variables
       ```
       $ export FLASK_ENV=development
-      $ export DATABASE_URL=postgres://name:password@houst:port/blog_api_db
+      $ export DATABASE_URL=postgres://name:password@host:port/database
       $ export JWT_SECRET_KEY=hhgaghhgsdhdhdd
       ```
   - Start the app with `python run.py`
