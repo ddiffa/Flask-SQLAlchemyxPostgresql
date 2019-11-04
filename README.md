@@ -1,5 +1,7 @@
 # JWT-Flask-SQLAlchemy
-
+## Documentation
+  - [Postman](https://documenter.getpostman.com/view/6149286/SW14VxYd) 
+  
 ## Installation
   - Install [Python](https://www.python.org/downloads/), [Pipenv](https://docs.pipenv.org/) and [Postgres](https://www.postgresql.org/) on your machine
   - Activate the project virtual environment with `$ pipenv shell` command
@@ -21,3 +23,9 @@
       $ export JWT_SECRET_KEY=hhgaghhgsdhdhdd
       ```
   - Start the app with `python run.py`
+  
+## Migrate Database
+  - Start the app with `python manage.py db init`
+  - Then `python manage.py db migrate`
+  - `python manage.py db upgrade`
+  - check your database 
