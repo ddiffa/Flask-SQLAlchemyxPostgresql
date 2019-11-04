@@ -99,9 +99,9 @@ def delete(user_id):
         return custom_response({'messages':'User not found'},404)
     user.delete()
     if user:
-        return custom_response({'messages':'user has been deleted.'},400)
+        return custom_response({'messages':'user has been deleted.'},200)
    
-    return custom_response({'messages':'error'},40)
+    return custom_response({'messages':'error'},400)
 
 @user_api.route('/me', methods=['GET'])
 @Auth.auth_required

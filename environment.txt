@@ -1,3 +1,3 @@
 $export FLASK_ENV=development
-$export DATABASE_URL=postgres://name:password@houst:port/blog_api_db
+$export DATABASE_URL=postgres://name:password@houst:port/db
 $export JWT_SECRET_KEY=hhgaghhgsdhdhdd

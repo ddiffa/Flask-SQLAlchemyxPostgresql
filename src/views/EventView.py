@@ -6,6 +6,23 @@ event_api = Blueprint('events',__name__)
 
 event_schema = EventSchema()
 
+
+@event_api.route('/',methods=['POST'])
+@Auth.auth_required
+def create_event():
+    req_data = request.get_json()
+    data,error = event_schema.load(req_data)
+
+    if error:
+        return custom_response(error,400)
+    
+    event = EventModel(data)
+    event.save()
+
+    ser_data = event_schema.dump(event).data
+
+    return custom_response({'messages':'success','event':ser_data},200)
+
 @event_api.route('/',methods=['GET'])
 @Auth.auth_required
 def get_all():
@@ -24,30 +41,30 @@ def get_a_event(event_id):
     ser_event = event_schema.dump(event).data
     return custom_response(ser_event,200)
 
-@event_api.route('/',methods=['PUT'])
+@event_api.route('/<int:event_id>',methods=['PUT'])
 @Auth.auth_required
-def update():
+def update(event_id):
     req_data = request.get_json()
     data,error = event_schema.load(req_data,partial=True)
     if error:
         return custom_response(error,400)
     
-    event = EventModel.get_one_event(g.event.get('id'))
+    event = EventModel.get_one_event(event_id)
     event.update(data)
     ser_event = event_schema.dump(event).data
     return custom_response(ser_event,200)
 
-@event_api.route('/',methods=['DELETE'])
+@event_api.route('/<int:event_id>',methods=['DELETE'])
 @Auth.auth_required
-def delete():
-    event = EventModel.get_one_event(g.event.get('id'))
+def delete(event_id):
+    event = EventModel.get_one_event(event_id)
     event.delete()
     return custom_response({'message':'deleted'},204)
 
 @event_api.route('/me',methods=['GET'])
 @Auth.auth_required
 def get_event():
-    event = EventModel.get_event_by_user(g.event.get('user_id'))
+    event = EventModel.get_event_by_user(g.user.get('id'))
     ser_event=event_schema.dump(event).data
     return custom_response(ser_event,200)
 
