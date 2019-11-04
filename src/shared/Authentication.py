@@ -45,7 +45,7 @@ class Auth():
     def generate_token(user_id):
         try:
             payload={
-                'exp' : datetime.datetime.utcnow() + datetime.timedelta(days=1),
+                'exp' : datetime.datetime.utcnow() + datetime.timedelta(days=14),
                 'iat' : datetime.datetime.utcnow(),
                 'sub' : user_id
             }

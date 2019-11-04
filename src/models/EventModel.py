@@ -1,6 +1,7 @@
 from marshmallow import fields, Schema
 import datetime
 from . import db
+from sqlalchemy import ForeignKey
 
 class EventModel(db.Model):
 
@@ -54,6 +55,10 @@ class EventModel(db.Model):
     def get_event_by_name(value):
         return EventModel.query.filter_by(evet_name=value).first()
     
+    @staticmethod
+    def get_event_by_user(value):
+        return EventModel.query.filter_by(fk_userid=value).first()
+        
     def __repr(self):
         return '<id {}>'.format(self.id)
     

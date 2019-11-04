@@ -1,8 +1,9 @@
 from marshmallow import fields, Schema
 import datetime
 from . import db
+from sqlalchemy import ForeignKey
 
-class EventModel(db.Model):
+class TicketModel(db.Model):
 
     __tablename__ = 'tickets'
 
@@ -10,8 +11,8 @@ class EventModel(db.Model):
     fk_userid = db.Column(db.Integer,ForeignKey('users.id'))
     fk_eventid = db.Column(db.Integer,ForeignKey('events.id'))
     ticket_name = db.Column(db.String(400), nullable=False)
-    ticket_phone = db.Column(db.String(300), nullable=Fal
-    ticket_qty = db.Column(db.Integer, nullable=False)
+    ticket_phone = db.Column(db.String(300), nullable=False)
+    ticket_qtys = db.Column(db.Integer, nullable=False)
 
     def __init__(self,data):
         self.fk_userid = data.get('user_id')
