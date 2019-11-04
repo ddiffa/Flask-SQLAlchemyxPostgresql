@@ -11,6 +11,7 @@ class UserModel(db.Model):
     email = db.Column(db.String(128), unique=True,nullable=False)
     password = db.Column(db.String(128),nullable=True)
     phone = db.Column(db.String(128),nullable=False)
+    role = db.Column(db.Integer,nullable=False)
     created_at = db.Column(db.DateTime)
     modified_at = db.Column(db.DateTime)
 
@@ -19,6 +20,7 @@ class UserModel(db.Model):
         self.email = data.get('email')
         self.password = md5(data.get('password').encode('UTF-8')).hexdigest()
         self.phone = data.get('password')
+        self.role = data.get('role')
         self.created_at = datetime.datetime.now()
         self.modified_at = datetime.datetime.now()
     
@@ -60,5 +62,6 @@ class UserSchema(Schema):
     email = fields.Email(required=True)
     password = fields.Str(required=True)
     phone = fields.Str(required=True)
+    role = fields.Int(required=True)
     created_at = fields.DateTime(dump_only=True)
     modified_at = fields.DateTime(dump_only=True)
