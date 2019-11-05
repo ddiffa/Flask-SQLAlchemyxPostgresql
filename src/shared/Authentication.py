@@ -40,6 +40,29 @@ class Auth():
             g.user = {'id': user_id}
             return func(*args, **kwargs)
         return decorated_auth
+    
+    @staticmethod
+    def generate_qrcode(ticket_id):
+        try:
+            payload={
+                'exp' : datetime.datetime.utcnow() + datetime.timedelta(days=1000),
+                'iat' : datetime.datetime.utcnow(),
+                'sub' : ticket_id
+            }
+            
+            return jwt.encode(
+                payload,
+                os.getenv('JWT_SECRET_KEY'),
+                'HS256'
+            ).decode("utf-8")
+        except Exception as e:
+            return Response(
+                mimetype="application/json",
+                response=json.dumps({
+                    'error': 'error in generating qrcode'
+                }),
+                status=400
+            )
 
     @staticmethod
     def generate_token(user_id):
