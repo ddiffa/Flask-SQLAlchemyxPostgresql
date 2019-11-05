@@ -19,7 +19,7 @@ class EventModel(db.Model):
     event_quota = db.Column(db.Integer, nullable=False)
 
     def __init__(self,data):
-        self.fk_userid = data.get('user_id')
+        self.fk_userid = data.get('fk_userid')
         self.event_name = data.get('event_name')
         self.event_date = data.get('event_date')
         self.event_place = data.get('event_place')
@@ -57,7 +57,7 @@ class EventModel(db.Model):
     
     @staticmethod
     def get_event_by_user(value):
-        return EventModel.query.filter_by(fk_userid=value).first()
+        return EventModel.query.filter_by(fk_userid=value).all()
         
     def __repr(self):
         return '<id {}>'.format(self.id)
