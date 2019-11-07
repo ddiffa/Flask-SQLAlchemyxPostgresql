@@ -24,10 +24,15 @@ class ParticipantModel(db.Model):
         for key, item in data.items():
             setattr(self,key,item)
         db.session.commit()
+
+    def update_status(self):
+        setattr(self,'status',False)
+        db.session.commit()
     
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
 
     @staticmethod
     def save_all(part,ticket):
@@ -47,6 +52,10 @@ class ParticipantModel(db.Model):
     def get_participant_by_ticket(value):
         return ParticipantModel.query.filter_by(fk_ticket=value).all()
     
+    @staticmethod
+    def get_partcipant_by_qrcode(value):
+        return ParticipantModel.query.filter_by(qrcode=value).first()
+
     def __repr(self):
         return '<id {}>'.format(self.id)
     
