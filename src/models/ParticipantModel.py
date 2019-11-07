@@ -2,7 +2,6 @@ from marshmallow import fields, Schema
 import datetime
 from . import db
 from sqlalchemy import ForeignKey
-# from TicketModel import TicketSchema
 
 class ParticipantModel(db.Model):
 
@@ -25,8 +24,8 @@ class ParticipantModel(db.Model):
             setattr(self,key,item)
         db.session.commit()
 
-    def update_status(self):
-        setattr(self,'status',False)
+    def update_status(self,data):
+        setattr(self,'status',data)
         db.session.commit()
     
     def delete(self):
