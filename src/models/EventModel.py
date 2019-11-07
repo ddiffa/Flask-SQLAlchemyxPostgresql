@@ -17,17 +17,6 @@ class EventModel(db.Model):
     event_category = db.Column(db.String(100),nullable=False)
     event_talent = db.Column(db.String(200),nullable=False)
     event_quota = db.Column(db.Integer, nullable=False)
-
-    def __init__(self,data):
-        self.fk_userid = data.get('fk_userid')
-        self.event_name = data.get('event_name')
-        self.event_date = data.get('event_date')
-        self.event_place = data.get('event_place')
-        self.event_detail = data.get('event_detail')
-        self.event_image = data.get('event_image')
-        self.event_category = data.get('event_category')
-        self.event_talent = data.get('event_talent')
-        self.event_quota = data.get('event_quota')
     
     def save(self):
         db.session.add(self)
@@ -38,6 +27,11 @@ class EventModel(db.Model):
             setattr(self,key,item)
         db.session.commit()
     
+    def update_stock(self,data):
+        setattr(self,'event_quota',(self.event_quota-data))
+        db.session.commit()
+        
+
     def delete(self):
         db.session.delete(self)
         db.session.commit()
