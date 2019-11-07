@@ -52,7 +52,7 @@ class Auth():
             
             return jwt.encode(
                 payload,
-                os.getenv('JWT_SECRET_KEY'),
+                os.getenv('QR_CODE'),
                 'HS256'
             ).decode("utf-8")
         except Exception as e:
