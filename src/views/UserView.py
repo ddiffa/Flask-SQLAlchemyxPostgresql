@@ -32,7 +32,6 @@ def login():
     return custom_response({'token':token},200)
     
 @user_api.route('/register',methods=['POST'])
-@Auth.auth_required
 def create():
     req_data = request.get_json()
     data,error = user_schema.load(req_data)
