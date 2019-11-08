@@ -1,4 +1,6 @@
 # JWT-Flask-SQLAlchemy
+## BASE URL
+  - [Heroku](https://freecoba.herokuapp.com/)
 ## Documentation
   - [Postman](https://documenter.getpostman.com/view/6149286/SW14VxYd) 
   
