@@ -1,8 +1,15 @@
 # JWT-Flask-SQLAlchemy
 ## BASE URL
   - [Heroku](https://freecoba.herokuapp.com/)
+  - Image Url : https://freecoba.herokuapp.com/api/v1/events/images/{id_events}
+
+## DEPLOY
+  - Heroku
+  - Ubuntu Server using dokku
+  
 ## Documentation
   - [Postman](https://documenter.getpostman.com/view/6149286/SW14VxYd) 
+  
   
 ## Installation
   - Install [Python](https://www.python.org/downloads/), [Pipenv](https://docs.pipenv.org/) and [Postgres](https://www.postgresql.org/) on your machine
